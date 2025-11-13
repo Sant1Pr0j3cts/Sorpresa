@@ -5,181 +5,82 @@
   <title>Reserva la noche – 25 de noviembre 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(circle at top,#ff9a9e 0,#fbc2eb 30%,#2b2b3c 100%);color:#fff;
     }
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:-1}
+    .card{
+      background:rgba(10,10,20,.88);border-radius:24px;padding:28px 24px 24px;
+      max-width:420px;width:92%;box-shadow:0 18px 40px rgba(0,0,0,.4);
+      backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1)
+    }
+    .badge-date{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;text-transform:uppercase;letter-spacing:.09em;background:rgba(255,255,255,.06);border-radius:999px;padding:6px 12px;margin-bottom:14px}
+    .badge-dot{width:8px;height:8px;border-radius:50%;background:#ffb347;box-shadow:0 0 8px rgba(255,179,71,.9)}
+    h1{font-size:1.7rem;margin-bottom:10px;line-height:1.2}
+    .sub{font-size:.98rem;opacity:.85;margin-bottom:18px}
+    .highlight-name{font-weight:600;color:#ffdf9e}
+    .steps{list-style:none;margin:14px 0 18px;font-size:.95rem}
+    .steps li{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
+    .steps span.num{width:22px;height:22px;border-radius:999px;border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;margin-top:2px}
+    .steps span.text{opacity:.9}
+    .countdown-box{font-size:.85rem;opacity:.9;margin-bottom:18px}
+    .count-label{text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;opacity:.7}
+    #countdown{margin-top:4px;font-weight:500}
+    .cta{margin-top:6px;display:flex;flex-direction:column;gap:8px}
+    .btn-main{
+      display:inline-flex;justify-content:center;align-items:center;padding:10px 16px;border-radius:999px;border:none;cursor:pointer;font-weight:600;font-size:.98rem;background:linear-gradient(135deg,#ff9a9e,#fecf73);color:#13131f;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;box-shadow:0 10px 20px rgba(0,0,0,.45)
+    }
+    .btn-main:hover{transform:translateY(-1px);filter:brightness(1.03);box-shadow:0 14px 30px rgba(0,0,0,.55)}
+    .note{font-size:.82rem;opacity:.8;text-align:center}
+    .footer{margin-top:14px;text-align:center;font-size:.75rem;opacity:.7}
+    @media (min-width:600px){.card{padding:32px 30px 26px}h1{font-size:1.9rem}}
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #ff9a9e 0, #fbc2eb 30%, #2b2b3c 100%);
-      color: #fff;
+    /* --- Música: overlay y control flotante --- */
+    .audio-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:10;
     }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.25);
-      z-index: -1;
+    .audio-overlay .panel{
+      background:#111827; border:1px solid rgba(255,255,255,.12); padding:20px; border-radius:18px; width:min(92%,420px);
+      text-align:center; box-shadow:0 18px 40px rgba(0,0,0,.5);
     }
-
-    .card {
-      background: rgba(10, 10, 20, 0.88);
-      border-radius: 24px;
-      padding: 28px 24px 24px;
-      max-width: 420px;
-      width: 92%;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.1);
+    .audio-overlay h2{font-size:1.1rem;margin-bottom:8px}
+    .audio-overlay p{opacity:.85;margin-bottom:14px}
+    .btn-sound{
+      display:inline-flex;align-items:center;gap:8px;background:#ffdf9e;color:#111;padding:10px 14px;border-radius:999px;font-weight:700;border:none;cursor:pointer
     }
-
-    .badge-date {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      background: rgba(255,255,255,0.06);
-      border-radius: 999px;
-      padding: 6px 12px;
-      margin-bottom: 14px;
+    .audio-toggle{
+      position:fixed;right:16px;bottom:16px;z-index:9;background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);
+      border-radius:999px;padding:10px 12px;display:flex;align-items:center;gap:8px;cursor:pointer
     }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ffb347;
-      box-shadow: 0 0 8px rgba(255,179,71,0.9);
-    }
-
-    h1 {
-      font-size: 1.7rem;
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .sub {
-      font-size: 0.98rem;
-      opacity: 0.85;
-      margin-bottom: 18px;
-    }
-
-    .highlight-name {
-      font-weight: 600;
-      color: #ffdf9e;
-    }
-
-    .steps {
-      list-style: none;
-      margin: 14px 0 18px;
-      font-size: 0.95rem;
-    }
-
-    .steps li {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 8px;
-      align-items: flex-start;
-    }
-
-    .steps span.num {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.78rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .steps span.text {
-      opacity: 0.9;
-    }
-
-    .countdown-box {
-      font-size: 0.85rem;
-      opacity: 0.9;
-      margin-bottom: 18px;
-    }
-
-    .count-label {
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.72rem;
-      opacity: 0.7;
-    }
-
-    #countdown {
-      margin-top: 4px;
-      font-weight: 500;
-    }
-
-    .cta {
-      margin-top: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .btn-main {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.98rem;
-      background: linear-gradient(135deg, #ff9a9e, #fecf73);
-      color: #13131f;
-      text-decoration: none;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.45);
-    }
-
-    .btn-main:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.55);
-    }
-
-    .note {
-      font-size: 0.82rem;
-      opacity: 0.8;
-      text-align: center;
-    }
-
-    .footer {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 0.75rem;
-      opacity: 0.7;
-    }
-
-    @media (min-width: 600px) {
-      .card {
-        padding: 32px 30px 26px;
-      }
-      h1 {
-        font-size: 1.9rem;
-      }
-    }
+    .audio-toggle span{font-size:.9rem}
   </style>
 </head>
 <body>
   <div class="overlay"></div>
+
+  <!-- AUDIO: pon tu archivo en la raíz como music.mp3 -->
+  <audio id="bgm" src="music.mp3" preload="auto" loop playsinline></audio>
+
+  <!-- Overlay que solo aparece si el autoplay es bloqueado -->
+  <div id="audioOverlay" class="audio-overlay">
+    <div class="panel">
+      <h2>🎶 ¿Activamos la música?</h2>
+      <p>Toca el botón para acompañar la invitación con una melodía.</p>
+      <button id="enableSound" class="btn-sound">Activar sonido</button>
+    </div>
+  </div>
+
+  <!-- Botón flotante play/pausa -->
+  <button id="audioToggle" class="audio-toggle" aria-pressed="false" title="Música">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path id="iconPath" d="M8 5v14l11-7z"></path>
+    </svg>
+    <span id="audioState">Reproducir</span>
+  </button>
 
   <main class="card">
     <div class="badge-date">
@@ -195,18 +96,9 @@
     </p>
 
     <ul class="steps">
-      <li>
-        <span class="num">1</span>
-        <span class="text">Márcala en tu agenda: <strong>25/11/2025 – Noche</strong>.</span>
-      </li>
-      <li>
-        <span class="num">2</span>
-        <span class="text">Elige el outfit que te haga sentir increíble (como siempre te ves).</span>
-      </li>
-      <li>
-        <span class="num">3</span>
-        <span class="text">Llega con esa sonrisa que me encanta… y deja que la noche haga el resto.</span>
-      </li>
+      <li><span class="num">1</span><span class="text">Márcala en tu agenda: <strong>25/11/2025 – Noche</strong>.</span></li>
+      <li><span class="num">2</span><span class="text">Elige el outfit que te haga sentir increíble (como siempre te ves).</span></li>
+      <li><span class="num">3</span><span class="text">Llega con esa sonrisa que me encanta… y deja que la noche haga el resto.</span></li>
     </ul>
 
     <div class="countdown-box">
@@ -215,45 +107,92 @@
     </div>
 
     <div class="cta">
-      <a class="btn-main"
-   href="https://wa.me/573164201485?text=Claro%2C%20reservo%20la%20noche%20del%2025%20contigo%💖">
-  Confirmar que reservo esa noche 💌
-</a>
-
-      <p class="note">
-        Si algo cambia, solo dime. Pero ojalá esa noche siga siendo nuestra.
-      </p>
+      <!-- Cambia el href por tu WhatsApp -->
+      <a class="btn-main" href="#">
+        Confirmar que reservo esa noche 💌
+      </a>
+      <p class="note">Si algo cambia, solo dime. Pero ojalá esa noche siga siendo nuestra.</p>
     </div>
 
-    <div class="footer">
-      Hecho con cariño, pensando solo en ti.
-    </div>
+    <div class="footer">Hecho con cariño, pensando solo en ti.</div>
   </main>
 
   <script>
-    // Cuenta regresiva hasta el 25 de noviembre de 2025 a las 20:00 (8 p.m.)
+    // Cuenta regresiva
     const targetDate = new Date("2025-11-25T20:00:00");
-
-    function updateCountdown() {
+    function updateCountdown(){
       const now = new Date();
       const diff = targetDate - now;
       const el = document.getElementById("countdown");
-
-      if (diff <= 0) {
-        el.textContent = "La noche es hoy. Te espero preciosa. 💖";
-        return;
-      }
-
-      const totalSeconds = Math.floor(diff / 1000);
-      const days = Math.floor(totalSeconds / (60 * 60 * 24));
-      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
-      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-
-      el.textContent = `Faltan ${days} día(s), ${hours} hora(s) y ${minutes} minuto(s) para nuestra noche.`;
+      if(diff <= 0){ el.textContent = "La noche es hoy. Te espero preciosa. 💖"; return; }
+      const s = Math.floor(diff/1000);
+      const d = Math.floor(s/86400);
+      const h = Math.floor((s%86400)/3600);
+      const m = Math.floor((s%3600)/60);
+      el.textContent = `Faltan ${d} día(s), ${h} hora(s) y ${m} minuto(s) para nuestra noche.`;
     }
+    updateCountdown(); setInterval(updateCountdown, 60000);
 
-    updateCountdown();
-    setInterval(updateCountdown, 60 * 1000); // actualiza cada minuto
+    // Música con autoplay + fallback
+    const audio = document.getElementById('bgm');
+    const toggle = document.getElementById('audioToggle');
+    const stateTxt = document.getElementById('audioState');
+    const iconPath = document.getElementById('iconPath');
+    const overlay = document.getElementById('audioOverlay');
+    const enableBtn = document.getElementById('enableSound');
+
+    const setUI = (playing)=>{
+      if(playing){
+        stateTxt.textContent = 'Pausar';
+        iconPath.setAttribute('d','M6 19h4V5H6v14zm8-14v14h4V5h-4z');
+        toggle.setAttribute('aria-pressed','true');
+        localStorage.setItem('bgmEnabled','1');
+      }else{
+        stateTxt.textContent = 'Reproducir';
+        iconPath.setAttribute('d','M8 5v14l11-7z');
+        toggle.setAttribute('aria-pressed','false');
+      }
+    };
+
+    // Intento de autoplay (algunos navegadores lo bloquearán)
+    (async ()=>{
+      try{
+        await audio.play();
+        setUI(true);
+      }catch(e){
+        // Bloqueado: mostrar overlay para interacción del usuario
+        overlay.style.display = 'grid';
+        setUI(false);
+      }
+    })();
+
+    // Overlay: primer toque habilita sonido
+    enableBtn.addEventListener('click', async ()=>{
+      try{
+        await audio.play();
+        setUI(true);
+        overlay.style.display = 'none';
+      }catch(e){
+        // Si aún falla, mantenemos visible el overlay
+      }
+    });
+
+    // Botón flotante play/pause
+    toggle.addEventListener('click', async ()=>{
+      if(audio.paused){
+        try{ await audio.play(); setUI(true); }catch(e){}
+      }else{
+        audio.pause(); setUI(false);
+      }
+    });
+
+    // Si el usuario ya habilitó antes, reproducir al primer gesto
+    document.addEventListener('pointerdown', async function once(){
+      if(localStorage.getItem('bgmEnabled') === '1' && audio.paused){
+        try{ await audio.play(); setUI(true);}catch(e){}
+      }
+      document.removeEventListener('pointerdown', once);
+    });
   </script>
 </body>
 </html>
