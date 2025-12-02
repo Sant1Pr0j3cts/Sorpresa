@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Reserva la noche – 25 de noviembre 2025</title>
+  <title>Siempre tendrás un lugar en mi corazón</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
@@ -17,16 +17,14 @@
       max-width:420px;width:92%;box-shadow:0 18px 40px rgba(0,0,0,.4);
       backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1)
     }
-    .badge-date{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;text-transform:uppercase;letter-spacing:.09em;background:rgba(255,255,255,.06);border-radius:999px;padding:6px 12px;margin-bottom:14px}
-    .badge-dot{width:8px;height:8px;border-radius:50%;background:#ffb347;box-shadow:0 0 8px rgba(255,179,71,.9)}
-    h1{font-size:1.7rem;margin-bottom:10px;line-height:1.2}
-    .sub{font-size:.98rem;opacity:.85;margin-bottom:18px}
+    h1{font-size:1.7rem;margin-bottom:10px;line-height:1.2;text-align:center}
+    .sub{font-size:.98rem;opacity:.85;margin-bottom:18px;text-align:center}
     .highlight-name{font-weight:600;color:#ffdf9e}
     .steps{list-style:none;margin:14px 0 18px;font-size:.95rem}
     .steps li{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
     .steps span.num{width:22px;height:22px;border-radius:999px;border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;margin-top:2px}
     .steps span.text{opacity:.9}
-    .countdown-box{font-size:.85rem;opacity:.9;margin-bottom:18px}
+    .countdown-box{font-size:.85rem;opacity:.9;margin-bottom:18px;text-align:center}
     .count-label{text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;opacity:.7}
     #countdown{margin-top:4px;font-weight:500}
     .cta{margin-top:6px;display:flex;flex-direction:column;gap:8px}
@@ -37,165 +35,73 @@
     .note{font-size:.82rem;opacity:.8;text-align:center}
     .footer{margin-top:14px;text-align:center;font-size:.75rem;opacity:.7}
     @media (min-width:600px){.card{padding:32px 30px 26px}h1{font-size:1.9rem}}
-
-    /* --- Música: overlay y control flotante --- */
-    .audio-overlay{
-      position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:10;
-    }
-    .audio-overlay .panel{
-      background:#111827; border:1px solid rgba(255,255,255,.12); padding:20px; border-radius:18px; width:min(92%,420px);
-      text-align:center; box-shadow:0 18px 40px rgba(0,0,0,.5);
-    }
-    .audio-overlay h2{font-size:1.1rem;margin-bottom:8px}
-    .audio-overlay p{opacity:.85;margin-bottom:14px}
-    .btn-sound{
-      display:inline-flex;align-items:center;gap:8px;background:#ffdf9e;color:#111;padding:10px 14px;border-radius:999px;font-weight:700;border:none;cursor:pointer
-    }
-    .audio-toggle{
-      position:fixed;right:16px;bottom:16px;z-index:9;background:rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);
-      border-radius:999px;padding:10px 12px;display:flex;align-items:center;gap:8px;cursor:pointer
-    }
-    .audio-toggle span{font-size:.9rem}
   </style>
 </head>
+
 <body>
   <div class="overlay"></div>
 
-  <!-- AUDIO: pon tu archivo en la raíz como music.mp3 -->
-  <audio id="bgm" src="music.mp3" preload="auto" loop playsinline></audio>
-
-  <!-- Overlay que solo aparece si el autoplay es bloqueado -->
-  <div id="audioOverlay" class="audio-overlay">
-    <div class="panel">
-      <h2>🎶 ¿Activamos la música?</h2>
-      <p>Toca el botón para acompañar la invitación con una melodía.</p>
-      <button id="enableSound" class="btn-sound">Activar sonido</button>
-    </div>
-  </div>
-
-  <!-- Botón flotante play/pausa -->
-  <button id="audioToggle" class="audio-toggle" aria-pressed="false" title="Música">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path id="iconPath" d="M8 5v14l11-7z"></path>
-    </svg>
-    <span id="audioState">Reproducir</span>
-  </button>
-
   <main class="card">
-    <div class="badge-date">
-      <span class="badge-dot"></span>
-      <span>Martes · 25 de noviembre de 2025</span>
-    </div>
 
-    <h1>Reserva esta noche solo para ti ✨</h1>
+    <h1>Gracias por dejarme intentarlo ✨</h1>
 
     <p class="sub">
-      Hoy no te pido nada, solo que <span class="highlight-name">reserves esa noche</span>, te alistes con calma
-      y vengas tan hermosa como siempre. De lo demás me encargo yo.
+      Solo quiero que sepas que <span class="highlight-name">hice lo mejor que pude</span>,
+      di lo mejor de mí y lo hice desde el cariño más sincero.  
+      Aun así, sentí que tu interés no era el mismo, y lo respeto profundamente.
     </p>
 
     <ul class="steps">
-      <li><span class="num">1</span><span class="text">Márcala en tu agenda: <strong>25/11/2025 – Noche</strong>.</span></li>
-      <li><span class="num">2</span><span class="text">Elige el outfit que te haga sentir increíble (como siempre te ves).</span></li>
-      <li><span class="num">3</span><span class="text">Llega con esa sonrisa que me encanta… y deja que la noche haga el resto.</span></li>
+      <li>
+        <span class="num">1</span>
+        <span class="text">
+          No voy a insistir más. Tu tranquilidad siempre estará por encima de mis ganas.
+        </span>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <span class="text">
+          Tienes un corazón muy bonito, de esos que merecen a alguien que tú sientas que realmente lo merece,
+          aunque tal vez esa persona no sea yo.
+        </span>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <span class="text">
+          Aun así, te confieso algo: te ganaste mi corazón.  
+          Y si algún día vuelves a esta página y decides que quieres tomar el riesgo conmigo,  
+          <strong>siempre tendrás un espacio en él</strong>.
+        </span>
+      </li>
     </ul>
 
     <div class="countdown-box">
-      <div class="count-label">Cuenta regresiva</div>
-      <div id="countdown">Calculando el tiempo para nuestra noche...</div>
+      <div class="count-label">Si algún día vuelves a leer esto…</div>
+      <div id="countdown">El tiempo puede pasar, pero lo que sentí por ti fue real.</div>
     </div>
 
     <div class="cta">
-      <!-- Cambia el href por tu WhatsApp -->
       <a class="btn-main"
-   href="https://wa.me/573164201485?text=Claro%2C%20reservo%20la%20noche%20del%2025%20contigo%20">
-  Confirmar que reservo esa noche 💌
-</a>
-      <p class="note">Si algo cambia, solo dime. Pero ojalá esa noche siga siendo nuestra.</p>
+         href="https://wa.me/573164201485?text=He%20le%C3%ADdo%20tu%20mensaje%20y%20quiero%20hablar%20contigo">
+        Si algún día quieres hablar, aquí estaré 💌
+      </a>
+      <p class="note">
+        No espero nada de ti, ni una respuesta.  
+        Solo quería dejar mis palabras donde puedan encontrarte si alguna vez decides volver.
+      </p>
     </div>
 
-    <div class="footer">Hecho con cariño, pensando solo en ti.</div>
+    <div class="footer">
+      Escrito desde el respeto, la gratitud y un corazón que aprendió gracias a ti.
+    </div>
+
   </main>
 
   <script>
-    // Cuenta regresiva
-    const targetDate = new Date("2025-11-25T20:00:00");
-    function updateCountdown(){
-      const now = new Date();
-      const diff = targetDate - now;
-      const el = document.getElementById("countdown");
-      if(diff <= 0){ el.textContent = "La noche es hoy. Te espero preciosa. 💖"; return; }
-      const s = Math.floor(diff/1000);
-      const d = Math.floor(s/86400);
-      const h = Math.floor((s%86400)/3600);
-      const m = Math.floor((s%3600)/60);
-      el.textContent = `Faltan ${d} día(s), ${h} hora(s) y ${m} minuto(s) para nuestra noche.`;
-    }
-    updateCountdown(); setInterval(updateCountdown, 60000);
-
-    // Música con autoplay + fallback
-    const audio = document.getElementById('bgm');
-    const toggle = document.getElementById('audioToggle');
-    const stateTxt = document.getElementById('audioState');
-    const iconPath = document.getElementById('iconPath');
-    const overlay = document.getElementById('audioOverlay');
-    const enableBtn = document.getElementById('enableSound');
-
-    const setUI = (playing)=>{
-      if(playing){
-        stateTxt.textContent = 'Pausar';
-        iconPath.setAttribute('d','M6 19h4V5H6v14zm8-14v14h4V5h-4z');
-        toggle.setAttribute('aria-pressed','true');
-        localStorage.setItem('bgmEnabled','1');
-      }else{
-        stateTxt.textContent = 'Reproducir';
-        iconPath.setAttribute('d','M8 5v14l11-7z');
-        toggle.setAttribute('aria-pressed','false');
-      }
-    };
-
-    // Intento de autoplay (algunos navegadores lo bloquearán)
-    (async ()=>{
-      try{
-        await audio.play();
-        setUI(true);
-      }catch(e){
-        // Bloqueado: mostrar overlay para interacción del usuario
-        overlay.style.display = 'grid';
-        setUI(false);
-      }
-    })();
-
-    // Overlay: primer toque habilita sonido
-    enableBtn.addEventListener('click', async ()=>{
-      try{
-        await audio.play();
-        setUI(true);
-        overlay.style.display = 'none';
-      }catch(e){
-        // Si aún falla, mantenemos visible el overlay
-      }
-    });
-
-    // Botón flotante play/pause
-    toggle.addEventListener('click', async ()=>{
-      if(audio.paused){
-        try{ await audio.play(); setUI(true); }catch(e){}
-      }else{
-        audio.pause(); setUI(false);
-      }
-    });
-
-    // Si el usuario ya habilitó antes, reproducir al primer gesto
-    document.addEventListener('pointerdown', async function once(){
-      if(localStorage.getItem('bgmEnabled') === '1' && audio.paused){
-        try{ await audio.play(); setUI(true);}catch(e){}
-      }
-      document.removeEventListener('pointerdown', once);
-    });
+    // Mantengo solo el texto dinámico, ya sin relación con fechas exactas
+    document.getElementById("countdown").textContent =
+      "Hoy solo deseo que seas feliz, estés donde estés. 💖";
   </script>
+
 </body>
 </html>
-
-
